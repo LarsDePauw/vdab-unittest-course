@@ -2,6 +2,8 @@ package com.realdolmen;
 
 import org.junit.Test;
 
+import javax.rmi.CORBA.Util;
+
 import static org.junit.Assert.assertEquals;
 
 public class UtilitiesTest {
@@ -28,5 +30,11 @@ public class UtilitiesTest {
     @Test
     public void greatestCommonFactorOfTwoEqualNumbersEqualsTheNumberItself() throws Exception {
         assertEquals(28, Utilities.greatestCommonFactor(28, 28));
+    }
+
+
+    @Test
+    public void smallerValueGetsSwitchedWithBiggerValue() throws Exception {
+        assertEquals(16, Utilities.greatestCommonFactor(64, 144));
     }
 }
