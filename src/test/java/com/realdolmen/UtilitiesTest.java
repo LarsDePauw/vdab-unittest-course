@@ -4,6 +4,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class UtilitiesTest {
     @Test
@@ -76,15 +77,21 @@ public class UtilitiesTest {
     }
 
     @Test
+    public void testIfNewFractionGetsSimplified(){
+        Fraction a = new Fraction(20, 40);
+        assertTrue(a.getNoemer() == 2 && a.getTeller() == 1);
+    }
+
+    @Test
     public void testingFractiontoString() {
-        Fraction a = new Fraction(3, 7);
+        Fraction a = new Fraction(9, 21);
         assertEquals("3/7", a.toString());
     }
 
     @Test
     public void testToSeeIfSimpliFyReturnsSimplifiedFraction() {
         Fraction b = new Fraction(12, 8);
-        assertEquals("3/2", b.simplify());
+        assertEquals("3/2", b.toString());
     }
 
     @Test

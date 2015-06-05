@@ -24,12 +24,13 @@ public class Fraction{
         if (this.noemer == 0) {
             throw new ArithmeticException("Noemer mag niet nul zijn. Dit is onmogelijk onnozelaar.");
         }
-        simplify();
+        this.simplify();
     }
 
-    protected String simplify() {
+    protected void simplify() {
         int gmnschappelijk = Utilities.greatestCommonFactor(teller, noemer);
-        return (teller / gmnschappelijk) + "/" + (noemer / gmnschappelijk);
+        this.noemer=this.noemer/gmnschappelijk;
+        this.teller=this.teller/gmnschappelijk;
 
     }
 
