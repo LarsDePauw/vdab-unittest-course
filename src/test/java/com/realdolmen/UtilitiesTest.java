@@ -1,8 +1,7 @@
 package com.realdolmen;
 
+import junit.framework.Assert;
 import org.junit.Test;
-
-import javax.rmi.CORBA.Util;
 
 import static org.junit.Assert.assertEquals;
 
@@ -37,4 +36,46 @@ public class UtilitiesTest {
     public void smallerValueGetsSwitchedWithBiggerValue() throws Exception {
         assertEquals(16, Utilities.greatestCommonFactor(64, 144));
     }
+
+    @Test
+    public void testToSeeIfasDoubleReturnsDouble() {
+        Fraction a = new Fraction(17, 23);
+        assertEquals(0.73913043478261, a.asDouble(), 0.0000001);
+    }
+
+    @Test()
+    public void checkingifEqualsFunctionComparesFractionsAndGivesCorrectBoolean() {
+        Fraction a = new Fraction(12, 8);
+        Fraction b = new Fraction(12, 8);
+        assertEquals(false, a.equals(b));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testToSeeIfExceptionGetsThrownWithDenominatorZero() {
+        Fraction a = new Fraction(5, 0);
+    }
+
+    @Test
+    public void testingGetterForDenominator() {
+        Fraction a = new Fraction(5, 8);
+        assertEquals(5, a.getTeller());
+    }
+
+    @Test
+    public void testingGetterForNominator() {
+        Fraction a = new Fraction(7, 9);
+        assertEquals(9, a.getNoemer());
+    }
+
+    @Test
+    public void testingFractiontoString() {
+        Fraction a = new Fraction(3, 7);
+        assertEquals("3/7", a.toString());
+    }
+
+//    @Test
+//    public void testToSeeIfSimpliFyReturnsSimplifiedFraction(){
+//        Fraction b = new Fraction(12,8);
+//        assertEquals("3/2", b.simplify());
+//    }
 }
