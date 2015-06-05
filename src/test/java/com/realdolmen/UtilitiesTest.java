@@ -44,19 +44,20 @@ public class UtilitiesTest {
     }
 
     @Test()
-    public void checkingifEqualsFunctionComparesFractionsAndGivesTRUEBoolean() {
+    public void checkingifEqualsValueFunctionComparesFractionsAndGivesTRUEBoolean() {
         Fraction a = new Fraction(12, 8);
         Fraction b = new Fraction(12, 8);
-        assertEquals(false, a.equals(b));
+        assertEquals(true, a.equals(b));
     }
 
 
     @Test()
-    public void checkingifEqualsFunctionComparesFractionsAndGivesFALSEBoolean() {
+    public void checkingifEqualsValueFunctionComparesFractionsAndGivesFALSEBoolean() {
         Fraction a = new Fraction(12, 8);
         Fraction b = new Fraction(7, 8);
         assertEquals(false, a.equals(b));
     }
+
     @Test(expected = ArithmeticException.class)
     public void testToSeeIfExceptionGetsThrownWithDenominatorZero() {
         Fraction a = new Fraction(5, 0);
@@ -64,9 +65,9 @@ public class UtilitiesTest {
 
     @Test
     public void testingGetterForDenominator() {
-    Fraction a = new Fraction(5, 8);
-    assertEquals(5, a.getTeller());
-}
+        Fraction a = new Fraction(5, 8);
+        assertEquals(5, a.getTeller());
+    }
 
     @Test
     public void testingGetterForNominator() {
@@ -81,8 +82,28 @@ public class UtilitiesTest {
     }
 
     @Test
-    public void testToSeeIfSimpliFyReturnsSimplifiedFraction(){
-        Fraction b = new Fraction(12,8);
+    public void testToSeeIfSimpliFyReturnsSimplifiedFraction() {
+        Fraction b = new Fraction(12, 8);
         assertEquals("3/2", b.simplify());
+    }
+
+    @Test
+    public void testReciprocalIfReturnsNewInvertedFraction() {
+        Fraction a = new Fraction(5, 8);
+        assertEquals(new Fraction(8, 5), a.reciprocal());
+    }
+
+    @Test
+    public void testIfMultiplyReturnsNewFractionWithMultipliedValues() {
+        Fraction a = new Fraction(3, 7);
+        Fraction b = new Fraction(4, 2);
+        assertEquals(new Fraction(12, 14), a.multiply(b));
+    }
+
+    @Test
+    public void testIfAddFunctionReturnsNewFractionWithAddedValues(){
+        Fraction a = new Fraction(2, 3);
+        Fraction b = new Fraction(3, 4);
+        assertEquals(new Fraction(17, 12), a.add(b));
     }
 }
