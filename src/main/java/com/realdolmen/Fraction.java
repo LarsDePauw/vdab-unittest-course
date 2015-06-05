@@ -23,7 +23,7 @@ public class Fraction {
         }
     }
 
-    private String simplify() {
+    protected String simplify() {
         int gmnschappelijk = Utilities.greatestCommonFactor(teller, noemer);
         return (teller / gmnschappelijk) + "/" + (noemer / gmnschappelijk);
 

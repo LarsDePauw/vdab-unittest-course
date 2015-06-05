@@ -80,9 +80,9 @@ public class UtilitiesTest {
         assertEquals("3/7", a.toString());
     }
 
-//    @Test
-//    public void testToSeeIfSimpliFyReturnsSimplifiedFraction(){
-//        Fraction b = new Fraction(12,8);
-//        assertEquals("3/2", b.simplify());
-//    }
+    @Test
+    public void testToSeeIfSimpliFyReturnsSimplifiedFraction(){
+        Fraction b = new Fraction(12,8);
+        assertEquals("3/2", b.simplify());
+    }
 }
