@@ -113,4 +113,22 @@ public class UtilitiesTest {
         Fraction b = new Fraction(3, 4);
         assertEquals(new Fraction(17, 12), a.add(b));
     }
+
+    @Test
+    public void testIfNegativeFractionMultipliedWithPositiveFractionReturnsNegativeFraction(){
+        Fraction a = new Fraction(-1, 2);
+        Fraction b = new Fraction(3, 4);
+        assertEquals(new Fraction(-3, 8), a.multiply(b));
+    }
+
+    @Test
+    public void testIfNegativeFractionMultipliedWithNegativeFractionReturnspositiveFraction(){
+        Fraction a = new Fraction(-1, 2);
+        Fraction b = new Fraction(3, -4);
+        assertEquals(new Fraction(3, 8), a.multiply(b));
+    }
+
 }
+
+
+

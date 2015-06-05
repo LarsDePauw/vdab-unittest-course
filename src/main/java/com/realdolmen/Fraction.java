@@ -3,7 +3,7 @@ package com.realdolmen;
 import javax.xml.parsers.FactoryConfigurationError;
 import java.util.Objects;
 
-public class Fraction{
+public class Fraction {
     private int teller;
     private int noemer;
 
@@ -16,21 +16,25 @@ public class Fraction{
     }
 
     public Fraction(int teller, int noemer) {
-            this.teller = teller;
-            this.noemer = noemer;
+        this.teller = teller;
+        this.noemer = noemer;
         if (this.teller == 0) {
             throw new ArithmeticException("Teller mag niet nul zijn of het resultaat is oneindig.");
         }
         if (this.noemer == 0) {
             throw new ArithmeticException("Noemer mag niet nul zijn. Dit is onmogelijk onnozelaar.");
         }
+        if (this.noemer < 0 && this.teller < 0) {
+            this.noemer = -this.noemer;
+            this.teller = -this.teller;
+        }
         this.simplify();
     }
 
     protected void simplify() {
         int gmnschappelijk = Utilities.greatestCommonFactor(teller, noemer);
-        this.noemer=this.noemer/gmnschappelijk;
-        this.teller=this.teller/gmnschappelijk;
+        this.noemer = this.noemer / gmnschappelijk;
+        this.teller = this.teller / gmnschappelijk;
 
     }
 
@@ -45,19 +49,19 @@ public class Fraction{
 
     @Override
     public boolean equals(Object o) {
-        Fraction that = (Fraction)o;
+        Fraction that = (Fraction) o;
         return this.noemer == that.noemer && this.teller == that.teller;
     }
 
-    public Fraction reciprocal(){
+    public Fraction reciprocal() {
         return new Fraction(this.getNoemer(), this.getTeller());
     }
 
-    public Fraction multiply(Fraction that){
+    public Fraction multiply(Fraction that) {
         return new Fraction((this.teller * that.teller), (this.noemer * that.noemer));
     }
 
-    public Fraction add(Fraction that){
-     return new Fraction((this.teller*that.noemer+that.teller*this.noemer),(this.noemer*that.noemer));
+    public Fraction add(Fraction that) {
+        return new Fraction((this.teller * that.noemer + that.teller * this.noemer), (this.noemer * that.noemer));
     }
 }
