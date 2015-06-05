@@ -44,12 +44,19 @@ public class UtilitiesTest {
     }
 
     @Test()
-    public void checkingifEqualsFunctionComparesFractionsAndGivesCorrectBoolean() {
+    public void checkingifEqualsFunctionComparesFractionsAndGivesTRUEBoolean() {
         Fraction a = new Fraction(12, 8);
         Fraction b = new Fraction(12, 8);
         assertEquals(false, a.equals(b));
     }
 
+
+    @Test()
+    public void checkingifEqualsFunctionComparesFractionsAndGivesFALSEBoolean() {
+        Fraction a = new Fraction(12, 8);
+        Fraction b = new Fraction(7, 8);
+        assertEquals(false, a.equals(b));
+    }
     @Test(expected = ArithmeticException.class)
     public void testToSeeIfExceptionGetsThrownWithDenominatorZero() {
         Fraction a = new Fraction(5, 0);
@@ -57,9 +64,9 @@ public class UtilitiesTest {
 
     @Test
     public void testingGetterForDenominator() {
-        Fraction a = new Fraction(5, 8);
-        assertEquals(5, a.getTeller());
-    }
+    Fraction a = new Fraction(5, 8);
+    assertEquals(5, a.getTeller());
+}
 
     @Test
     public void testingGetterForNominator() {
