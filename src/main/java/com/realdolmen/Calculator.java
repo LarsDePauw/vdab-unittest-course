@@ -1,8 +1,6 @@
 package com.realdolmen;
 
-import java.math.BigInteger;
 
-import static javax.xml.bind.DatatypeConverter.parseInteger;
 
 
 public class Calculator {

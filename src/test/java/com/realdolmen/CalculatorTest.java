@@ -1,12 +1,9 @@
 package com.realdolmen;
 
-import com.mysql.jdbc.AssertionFailedException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.utilities.AssertionFailure;
 
-import static org.junit.Assert.fail;
 
 public class CalculatorTest {
     Calculator calculator;
