@@ -7,7 +7,6 @@ public interface PersonRepository {
      * @return The person with the specified primary key, or null if not found.
      */
     Person find(int id);
-
     /**
      * Saves (insert) a new person.
      * @param person The person to save.

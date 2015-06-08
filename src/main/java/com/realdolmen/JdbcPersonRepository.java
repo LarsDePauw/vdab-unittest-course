@@ -10,20 +10,6 @@ import java.sql.*;
  * See comments further in the code to give you some hints.
  */
 public class JdbcPersonRepository implements PersonRepository {
-    /**
-     CREATE TABLE `people` (
-     `id` int(11) NOT NULL AUTO_INCREMENT,
-     `firstName` varchar(255) DEFAULT NULL,
-     `lastName` varchar(255) DEFAULT NULL,
-     `street` varchar(255) DEFAULT NULL,
-     `number` varchar(255) DEFAULT NULL,
-     `city` varchar(255) DEFAULT NULL,
-     `postalcode` varchar(255) DEFAULT NULL,
-     `birthDate` date DEFAULT NULL,
-     PRIMARY KEY (`id`)
-     ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-     SELECT * FROM test.people;
-    */
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -36,10 +22,11 @@ public class JdbcPersonRepository implements PersonRepository {
                 PreparedStatement statement = connection.prepareStatement("select * from people p where p.id = ?");
                 statement.setInt(1, id);
                 ResultSet resultSet = statement.executeQuery();
-                resultSet.next();
-                // What happens if there is no person with this id?
-                // Did you test that scenario?
-                return new PersonMapper().implode(resultSet);
+                if (resultSet.next()) {
+                    return new PersonMapper().implode(resultSet);
+                } else {
+                    return null;
+                }
             }
         });
     }
@@ -92,7 +79,7 @@ public class JdbcPersonRepository implements PersonRepository {
         private Person implode(ResultSet rs) throws SQLException {
             Person person = new Person(
                     rs.getString("firstName"),
-                    null, // Bug! Oops! rs.getString("lastName"),
+                    rs.getString("lastName"),
                     rs.getDate("birthDate"),
                     new Address(
                             rs.getString("street"),
@@ -135,7 +122,7 @@ public class JdbcPersonRepository implements PersonRepository {
         try(Connection connection = createConnection()) {
             return statementExecutor.execute(connection);
         } catch(SQLException exception) {
-            throw new RepositoryException("Unable to execute statement", exception);
+            throw new RepositoryException("Unable to execute statement, me so solly", exception);
         }
     }
 }
