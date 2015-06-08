@@ -22,5 +22,8 @@ public class Calculator {
         } else {
             return Integer.parseInt(numbers);
         }
+
+
+        }
     }
 }
