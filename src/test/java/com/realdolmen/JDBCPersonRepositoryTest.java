@@ -1,12 +1,12 @@
 package com.realdolmen;
 
 
-import junit.framework.Assert;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,15 +50,15 @@ public class JDBCPersonRepositoryTest {
         Assert.assertNull(repository.find(1));
     }
 
-    @Test
-    public void testIfSafeMethodAddsPersonToDatabase() throws Exception {
-        PersonRepository repository = new JdbcPersonRepository();
-        Date larsBirthDay = new Date(1991, 1, 14);
-        City larsCity = new City("Vorselaar", "2290");
-        Address larsAddress = new Address("Groenstraat", "22", larsCity);
-        Person lars = new Person("Lars", "De Pauw", larsBirthDay, larsAddress);
-
-        repository.save(lars);
-        Assert.assertEquals("Lars", repository.find(3).getFirstName());
-    }
+//    @Test
+//    public void testIfSafeMethodAddsPersonToDatabase() throws Exception {
+//        PersonRepository repository = new JdbcPersonRepository();
+//        Date larsBirthDay = new Date(1991, 1, 14);
+//        City larsCity = new City("Vorselaar", "2290");
+//        Address larsAddress = new Address("Groenstraat", "22", larsCity);
+//        Person lars = new Person("Lars", "De Pauw", larsBirthDay, larsAddress);
+//
+//        repository.save(lars);
+//        Assert.assertEquals("Lars", repository.find(3).getFirstName());
+//    }
 }
